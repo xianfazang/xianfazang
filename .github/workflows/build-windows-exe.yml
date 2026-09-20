@@ -68,28 +68,31 @@ jobs:
       - name: Upload Actions artifact
         uses: actions/upload-artifact@v4
         with:
-          name: 测功机上位机-Mock
-          path: dynamometer-host/dist/测功机上位机-Mock.zip
+          name: dynamometer-host-Mock
+          path: dynamometer-host/dist/dynamometer-host-Mock.zip
           if-no-files-found: error
           retention-days: 30
 
       - name: Publish GitHub Release
         # Stable download link for non-technical users (Actions artifacts expire).
+        # Zip name is ASCII-only so GitHub Release asset URLs stay reliable.
         if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: phase0-mock-ui-v0.1.0
+          tag_name: phase0-mock-ui-v0.1.1
           name: 测功机上位机 Phase 0 Mock（双击运行）
           body: |
             Phase 0 Mock 上位机 Windows 可执行文件。
 
             **使用方法**
-            1. 下载下方的 `测功机上位机-Mock.zip`
+            1. 下载下方的 `dynamometer-host-Mock.zip`
             2. 解压
             3. 双击 `测功机上位机.exe`
 
             若杀毒软件提示未知来源，可选择「仍要运行」（未做代码签名的常见提示）。
-          files: dynamometer-host/dist/测功机上位机-Mock.zip
+
+            也可下载源码 zip 后双击 `dynamometer-host/打开测功机.bat`（需已安装 Python）。
+          files: dynamometer-host/dist/dynamometer-host-Mock.zip
           draft: false
           make_latest: true
           fail_on_unmatched_files: true

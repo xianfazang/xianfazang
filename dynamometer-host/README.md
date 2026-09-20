@@ -23,7 +23,9 @@ dynamometer-host
 
 ## Windows 双击 exe（打包）
 
-GitHub Actions 工作流 `.github/workflows/build-windows-exe.yml` 在 `windows-latest` 上用 PyInstaller 生成 `测功机上位机.exe`，并打成 `测功机上位机-Mock.zip`。
+GitHub Actions 工作流 `.github/workflows/build-windows-exe.yml` 在 `windows-latest` 上用 PyInstaller 生成 `测功机上位机.exe`，并打成 `dynamometer-host-Mock.zip`。
+
+也可双击 `打开测功机.bat`（或 `open.bat`）：自动创建 `.venv`、装依赖并启动（需已安装 Python）。
 
 本地 Windows 打包：
 
