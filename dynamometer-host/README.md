@@ -4,7 +4,7 @@
 
 技术栈：Python 3.11+ · PySide6 · pyqtgraph
 
-## Windows 运行
+## Windows 运行（开发）
 
 ```bat
 cd dynamometer-host
@@ -21,6 +21,19 @@ python -m dynamometer_host
 dynamometer-host
 ```
 
+## Windows 双击 exe（打包）
+
+GitHub Actions 工作流 `.github/workflows/build-windows-exe.yml` 在 `windows-latest` 上用 PyInstaller 生成 `测功机上位机.exe`，并打成 `测功机上位机-Mock.zip`。
+
+本地 Windows 打包：
+
+```bat
+cd dynamometer-host
+pip install -r requirements.txt -r requirements-build.txt
+pip install -e .
+pyinstaller build_exe.spec --noconfirm --clean
+powershell -File scripts\package_windows_zip.ps1
+```
 ## Linux / 开发机
 
 ```bash
